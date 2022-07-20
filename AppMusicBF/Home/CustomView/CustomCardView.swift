@@ -126,7 +126,7 @@ class CustomCardView: UIView {
     lazy var actionsView: CardActionView = {
        
         let view = CardActionView ()
-        view.translatesAutoresizingMaskIntoConstraints = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
@@ -144,8 +144,8 @@ class CustomCardView: UIView {
         cardContainerView.addSubview(cardCategoryTitle)
         cardContainerView.addSubview(likeAndTimeLabel)
         cardContainerView.addSubview(descriptionTitleLabel)
-        updateLayout(mode: .card)
         self.cardContainerView.addSubview(self.actionsView)
+        self.updateLayout(mode: .card)
     }
     
     func configureConstraints () {
@@ -190,17 +190,16 @@ class CustomCardView: UIView {
             
             cardCategoryDateLabel.topAnchor.constraint(equalTo: cardCategoryTittleLabel.bottomAnchor, constant: 2),
             cardCategoryDateLabel.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
-            cardCategoryTitle.topAnchor.constraint(equalTo: cardCategoryDateLabel.topAnchor, constant: 20),
             
+            cardCategoryTitle.topAnchor.constraint(equalTo: cardCategoryDateLabel.bottomAnchor, constant: 20),
             cardCategoryTitle.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor, constant: 20),
             cardCategoryTitle.trailingAnchor.constraint(equalTo: cardContainerView.trailingAnchor, constant: -20),
             
             
             likeAndTimeLabel.topAnchor.constraint(equalTo: cardCategoryTitle.bottomAnchor, constant: 10),
-            
             likeAndTimeLabel.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
             
-            descriptionTitleLabel.topAnchor.constraint(equalTo: likeAndTimeLabel.topAnchor, constant: 30),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: likeAndTimeLabel.bottomAnchor, constant: 30),
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor, constant: 40),
             descriptionTitleLabel.trailingAnchor.constraint(equalTo: cardContainerView.trailingAnchor, constant: -40),
             
@@ -208,7 +207,6 @@ class CustomCardView: UIView {
             
             self.actionsView.bottomAnchor.constraint(equalTo: self.cardContainerView.bottomAnchor, constant: -20),
             self.actionsView.leadingAnchor.constraint(equalTo: self.cardContainerView.leadingAnchor, constant: 20),
-            self.actionsView.bottomAnchor.constraint(equalTo: self.cardContainerView.bottomAnchor, constant: -20),
             self.actionsView.trailingAnchor.constraint(equalTo: self.cardContainerView.trailingAnchor, constant: -20),
             self.actionsView.heightAnchor.constraint(equalToConstant: 80)
             
@@ -231,7 +229,7 @@ class CustomCardView: UIView {
             containerLeadingConstraints?.constant = 30
             containerBottomConstraints?.constant = -15
         }
-        
+        self.actionsView.updateLayout(for: mode)
     }
     
     public func setupView (data: CardViewModel) {

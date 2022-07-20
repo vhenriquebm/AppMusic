@@ -69,7 +69,7 @@ class CardActionView: UIView {
         button.backgroundColor = .white
         button.layer.cornerRadius = 35
         button.setBackgroundImage(UIImage(named:"playBtn")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .black
         button.clipsToBounds = true
         return button
     }()
@@ -144,8 +144,8 @@ class CardActionView: UIView {
             
             self.playButton.centerXAnchor.constraint(equalTo: self.playView.centerXAnchor),
             self.playButton.centerYAnchor.constraint(equalTo: self.playView.centerYAnchor),
-            self.playButton.widthAnchor.constraint(equalToConstant: 45),
-            self.playButton.heightAnchor.constraint(equalToConstant: 45),
+            self.playButton.widthAnchor.constraint(equalToConstant:70),
+            self.playButton.heightAnchor.constraint(equalToConstant: 70),
             
             self.likeButton.centerXAnchor.constraint(equalTo: self.likeView.centerXAnchor),
             self.likeButton.centerYAnchor.constraint(equalTo: self.likeView.centerYAnchor),
@@ -172,17 +172,12 @@ class CardActionView: UIView {
             self.stackView.addArrangedSubview(self.playView)
             self.stackView.addArrangedSubview(self.likeView)
             self.stackView.addArrangedSubview(self.moreView)
-
-
-            
-            
             
         } else {
             self.downloadView.isHidden = true
             self.moreView.isHidden = true
             self.stackView.removeArrangedSubview(downloadView)
             self.stackView.removeArrangedSubview(moreView)
-
         }
     }
     
