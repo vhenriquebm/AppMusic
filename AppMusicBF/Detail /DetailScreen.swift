@@ -98,14 +98,11 @@ class DetailScreen: UIView {
         NSLayoutConstraint.activate([
             
             cardView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: -(topPading ?? 0)),
-            cardView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
-            cardView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
-            cardView.heightAnchor.constraint(equalToConstant: 500),
+            cardView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),     cardView.heightAnchor.constraint(equalToConstant: 500),
             cardView.widthAnchor.constraint(equalToConstant: self.frame.size.width),
             
             tableView.topAnchor.constraint(equalTo: self.cardView.bottomAnchor),
             tableView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
-            tableView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
             tableView.heightAnchor.constraint(equalToConstant: CGFloat(80 * (cardModel?.cardList?.count ?? 0) + 20)),
             tableView.widthAnchor.constraint(equalToConstant: self.frame.size.width),
             tableView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
