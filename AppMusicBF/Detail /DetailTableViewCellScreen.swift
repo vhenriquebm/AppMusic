@@ -22,7 +22,6 @@ class DetailTableViewCellScreen: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Teste Nome"
-        label.numberOfLines = 0
         label.font =  UIFont.systemFont(ofSize: 17, weight: .bold)
         label.textColor = .black
         return label
@@ -32,7 +31,6 @@ class DetailTableViewCellScreen: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Teste Nome"
-        label.numberOfLines = 0
         label.font =  UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         return label
@@ -53,6 +51,16 @@ class DetailTableViewCellScreen: UIView {
         button.tintColor = .lightGray
         return button
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     
     //MARK: - PRIVATE METHODS
@@ -82,21 +90,34 @@ class DetailTableViewCellScreen: UIView {
         NSLayoutConstraint.activate([
             
             self.thumbImage.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
-            self.thumbImage.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
-            self.thumbImage.heightAnchor.constraint(equalToConstant: 80),
-            self.thumbImage.widthAnchor.constraint(equalToConstant: 80),
+            self.thumbImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            self.thumbImage.heightAnchor.constraint(equalToConstant: 60),
+            self.thumbImage.widthAnchor.constraint(equalToConstant: 60),
 
-            self.title.leadingAnchor.constraint(equalTo: thumbImage.trailingAnchor, constant: 10),
-            self.title.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
+            self.title.leadingAnchor.constraint(equalTo: thumbImage.trailingAnchor, constant: 15),
+            self.title.topAnchor.constraint(equalTo: self.topAnchor,constant: 17),
             
-            self.subTitle.leadingAnchor.constraint(equalTo: thumbImage.trailingAnchor, constant: 10),
-            self.title.topAnchor.constraint(equalTo: self.title.bottomAnchor ,constant: 20),
+            self.subTitle.leadingAnchor.constraint(equalTo: thumbImage.trailingAnchor, constant: 15),
+            self.subTitle.topAnchor.constraint(equalTo: self.title.bottomAnchor ,constant: 4),
             
-            self.likeButton.topAnchor.constraint(equalTo: self.topAnchor,constant: 30),
-            self.likeButton.leadingAnchor.constraint(equalTo: self.title.trailingAnchor, constant: 20),
-        
-            self.moreButton.topAnchor.constraint(equalTo: self.topAnchor,constant: 30),
-            self.moreButton.leadingAnchor.constraint(equalTo: self.likeButton.trailingAnchor, constant: 20),
+            self.moreButton.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -15),
+            self.moreButton.widthAnchor.constraint(equalToConstant: 35),
+            self.moreButton.heightAnchor.constraint(equalToConstant: 35),
+            self.moreButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            
+            self.likeButton.trailingAnchor.constraint(equalTo: self.moreButton.leadingAnchor, constant: -15),
+            self.likeButton.widthAnchor.constraint(equalToConstant: 35),
+            self.likeButton.heightAnchor.constraint(equalToConstant: 35),
+            self.likeButton.topAnchor.constraint(equalTo: self.topAnchor,constant: 20)
+            
+            
         ])
+    }
+    
+    public func setupCell (data: CardListModel) {
+        
+        self.title.text = data.listTitle
+        self.subTitle.text = data.listSubtitle
+        self.thumbImage.image = UIImage(named: data.listImage ?? "")
     }
 }

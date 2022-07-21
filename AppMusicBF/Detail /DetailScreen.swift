@@ -40,6 +40,7 @@ class DetailScreen: UIView {
         table.showsVerticalScrollIndicator =  false
         table.isScrollEnabled = false
         table.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
+        table.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
         return table
     }()
     
