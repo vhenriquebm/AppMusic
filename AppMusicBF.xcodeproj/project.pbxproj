@@ -21,6 +21,7 @@
 		427BC968286B7363003C41F4 /* HomeViewControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BC967286B7363003C41F4 /* HomeViewControllerScreen.swift */; };
 		427BC96C286B7E4C003C41F4 /* CarViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BC96B286B7E4C003C41F4 /* CarViewTableViewCell.swift */; };
 		427BC96F286B7FC8003C41F4 /* CustomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427BC96E286B7FC8003C41F4 /* CustomCardView.swift */; };
+		42A0505A288F54C400012115 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A05059288F54C400012115 /* CustomNavBar.swift */; };
 		42B2CBB62876445A00D7034F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B2CBB52876445A00D7034F /* DetailViewController.swift */; };
 		42B2CBB82876449400D7034F /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B2CBB72876449400D7034F /* DetailScreen.swift */; };
 		42E9B41E286E5298000BBD18 /* CardActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9B41D286E5298000BBD18 /* CardActionView.swift */; };
@@ -43,6 +44,7 @@
 		427BC967286B7363003C41F4 /* HomeViewControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerScreen.swift; sourceTree = "<group>"; };
 		427BC96B286B7E4C003C41F4 /* CarViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewTableViewCell.swift; sourceTree = "<group>"; };
 		427BC96E286B7FC8003C41F4 /* CustomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardView.swift; sourceTree = "<group>"; };
+		42A05059288F54C400012115 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		42B2CBB52876445A00D7034F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		42B2CBB72876449400D7034F /* DetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
 		42E9B41D286E5298000BBD18 /* CardActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				427BC96E286B7FC8003C41F4 /* CustomCardView.swift */,
 				42E9B41D286E5298000BBD18 /* CardActionView.swift */,
+				42A05059288F54C400012115 /* CustomNavBar.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			files = (
 				04C70235270E2E6100FF8A27 /* CardViewModel.swift in Sources */,
 				427BC96C286B7E4C003C41F4 /* CarViewTableViewCell.swift in Sources */,
+				42A0505A288F54C400012115 /* CustomNavBar.swift in Sources */,
 				426743062888C91E0094BCD6 /* DetailTableViewCellScreen.swift in Sources */,
 				426743042888C88D0094BCD6 /* DetailTableViewCell.swift in Sources */,
 				427BC968286B7363003C41F4 /* HomeViewControllerScreen.swift in Sources */,
