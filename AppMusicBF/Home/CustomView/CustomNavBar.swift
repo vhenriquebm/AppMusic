@@ -22,7 +22,9 @@ class CustomNavBar: UIView {
     
     lazy var cardTitle: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()
@@ -69,21 +71,20 @@ class CustomNavBar: UIView {
     //MARK: - Private methods
     
     private func configureViews () {
+        self.addSubview(cardImage)
+        self.addSubview(overLayView)
         self.addSubview(categoryTitle)
         self.addSubview(cardTitle)
         self.addSubview(featureLabel)
-        self.addSubview(cardImage)
-        self.addSubview(overLayView)
+        
         self.configureConstraints()
     }
     
     private func configureConstraints () {
-       
         self.cardImage.pin(to: self)
         self.overLayView.pin(to: self)
         
         NSLayoutConstraint.activate([
-        
             self.categoryTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
             self.categoryTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20),
             self.categoryTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),

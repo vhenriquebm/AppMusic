@@ -8,10 +8,13 @@ func tappedClosedButton()
 
 class DetailScreen: UIView {
     
+    //MARK: - Properties
     private weak var delegate: DetailViewControllerScreenDelegate?
     var cardModel: CardViewModel?
     var navBarTopAnchor: NSLayoutConstraint?
     
+    //MARK: - UI Objects
+
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,12 +27,19 @@ class DetailScreen: UIView {
     }()
     
     lazy var cardView: CustomCardView = {
-        
         let view = CustomCardView (mode: .full)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.cardContainerView.layer.cornerRadius = 0.0
         view.setupView(data: self.cardModel ?? CardViewModel())
         return view
+    }()
+    
+    lazy var navBar: CustomNavBar = {
+        let navBar = CustomNavBar ()
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        navBar.backgroundColor = .black
+        navBar.configureView(data:  self.cardModel ?? CardViewModel())
+        return navBar
     }()
     
     lazy var tableView: UITableView = {
@@ -45,7 +55,6 @@ class DetailScreen: UIView {
     }()
     
     lazy var closeButton: UIButton = {
-        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 15
@@ -57,7 +66,6 @@ class DetailScreen: UIView {
     }()
     
     @objc func closePressed () {
-        
         self.delegate?.tappedClosedButton()
     }
     
@@ -80,9 +88,22 @@ class DetailScreen: UIView {
         self.addSubview(scrollView)
         self.scrollView.addSubview(cardView)
         self.scrollView.addSubview(tableView)
+        self.addSubview(navBar)
         self.addSubview(self.closeButton)
     }
     
+    
+    // MARK: - Public methods
+    
+    public func setupDelegates (delegate: UITableViewDelegate, dataSource: UITableViewDataSource, scrollViewDelegate: UIScrollViewDelegate, detailViewScreenDelegate: DetailViewControllerScreenDelegate) {
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
+        scrollView.delegate =  scrollViewDelegate
+        self.delegate = detailViewScreenDelegate
+    }
+    
+    // MARK: - Private methods
+
     
     private func setupConstraints () {
         
@@ -111,15 +132,20 @@ class DetailScreen: UIView {
             closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             closeButton.widthAnchor.constraint(equalToConstant: 30),
             closeButton.heightAnchor.constraint(equalToConstant: 30),
-            closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10)
+            closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+        
+            self.navBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.navBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.navBar.heightAnchor.constraint(equalToConstant: ((topPading ?? 0.0) + 80))
+
+        
         ])
+        
+        self.navBarTopAnchor = self.navBar.topAnchor.constraint(equalTo: self.topAnchor, constant: -((topPading ?? 0.0) + 60))
+        self.navBarTopAnchor?.isActive = true
     }
     
-    func setupDelegates (delegate: UITableViewDelegate, dataSource: UITableViewDataSource, scrollViewDelegate: UIScrollViewDelegate, detailViewScreenDelegate: DetailViewControllerScreenDelegate) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
-        scrollView.delegate =  scrollViewDelegate
-        self.delegate = detailViewScreenDelegate
-    }
+    
+    
     
 }
